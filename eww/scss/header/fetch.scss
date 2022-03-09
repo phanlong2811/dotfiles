@@ -1,0 +1,31 @@
+.fetchContent {
+  padding: 2rem 0;
+  font-family: 'Fira Code';
+  font-size: 1.1rem;
+  color: $white;
+  border-right: 0px solid $grey;
+}
+
+.logo {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 4rem;
+  color: $green;
+  margin: 0 1.5rem
+}
+
+.fetch {
+  background-color: $blackAlt;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: .6rem;
+}
+
+.fetchTitles {
+  color: $green;
+  padding-right: 1rem
+}
+
+.ssd {
+  margin: 1rem;
+  font-weight: bolder;
+}

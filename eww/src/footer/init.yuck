@@ -1,0 +1,14 @@
+(defwidget backlightSlider []
+    (metric
+             :class 'brightness'
+             :value 0
+             :orientation 'h'
+             :flipped false
+             )
+)
+
+(defwidget footer []
+  (box :orientation "v"
+  (backlightSlider)
+  (btns)
+ ))

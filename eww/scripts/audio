@@ -1,0 +1,15 @@
+#!/bin/sh
+
+headvol() {
+  amixer -D pulse sget Master | grep 'Left:' | cut -d\  -f7 | tr -d '[%]'
+}
+
+mastervol() {
+  amixer -D pulse sget Master | grep 'Left:' | cut -d\  -f7 | tr -d '[%]'
+}
+
+micvol() {
+  amixer -D pulse sget Capture | grep 'Left:' | cut -d\  -f7 | tr -d '[%]'
+}
+
+"$@"

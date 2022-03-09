@@ -1,0 +1,33 @@
+(defwidget btn [name command class]
+  (box :orientation "v"
+       :halign "center"
+       :class "btnMargin"
+    (button :onclick command 
+        :class "btn ${class}" 
+      name))
+)
+
+(defwidget btns []
+  (box :orientation "h"
+       :class 'footerBtns'
+ 
+  (btn :name ""
+    :command "rofi -show drun"
+    :class "restart"
+  )
+  
+  (btn :name wifi 
+   :command "st -e nmtui"
+   :class "wifi"
+  )
+  
+  (btn :name "ﰇ"
+    :command "reboot"
+    :class "lock"
+  )
+
+  (btn :name "" 
+    :command "bspc quit"
+    :class "sleep"
+  )
+))

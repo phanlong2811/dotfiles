@@ -1,0 +1,46 @@
+(defwidget audioSliders []
+  (box :space-evenly false :class 'audioSliders'
+  ; Headphone 
+    (box :orientation 'v' :class 'addPadding'
+    (label :text '' :class 'audioIcon')
+    (metric
+             :class 'lightSlider'
+             :value brightness
+             :onchange "sudo xbacklight -set {}"
+             :orientation 'v'
+             :flipped true 
+            ))
+
+    ; Master
+    (box :orientation 'v' :class 'addPadding' 
+    (label :text '' :class 'audioIcon')
+    (metric
+             :class 'masterSlider'
+             :value master_vol
+             :onchange "amixer -D pulse set Master {}%"
+             :orientation 'v'
+             :flipped true
+         )
+    )
+    
+    ; Mic 
+    (box :orientation 'v'  :class 'addPadding'
+    (label :text '' :class 'audioIcon')
+    (metric 
+             :class 'micSlider'
+             :value mic_vol
+             :onchange "amixer -D pulse set Capture {}%"
+             :orientation 'v'
+             :flipped true 
+            ))
+
+   (box :orientation 'v' :class 'pkgsBox'
+    (progressBar
+      :value battery 
+      :text ''
+      :class 'battery'
+      )
+    ; package count
+    (label :text ' ${pkgs} pkgs' :class 'pkgs')
+  )
+ ))

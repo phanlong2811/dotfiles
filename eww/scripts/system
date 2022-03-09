@@ -1,0 +1,44 @@
+#!/bin/bash
+
+pkgCount() {
+  aptitude search '~U' | wc -l
+}
+
+pkgUpdates() {
+  updates=$(aptitude search '~U' | wc -l)
+
+  if [[ -z "$updates" ]]; then
+    echo "Fully Updated"
+  else
+    echo " $updates""pkgs"
+  fi
+}
+
+battery() {
+   upower -i $(upower -e | grep '/battery') | grep --color=never -E percentage|xargs|cut -d' ' -f2|sed s/%//
+}
+
+cpu() {
+  grep -o "^[^ ]*" /proc/loadavg
+}
+
+disk() {
+    df -hl | awk '/^\/dev\/nvme/{ sum+=$5 } END { print sum }'
+}
+
+ram() {
+  printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}')
+}
+
+backlight() {
+  printf "%.0f\n" $(cat /sys/class/backlight/*/brightness)
+}
+
+wifi() {
+  case "$(cat /sys/class/net/wl*/operstate 2>/dev/null)" in
+  up) printf "󰤨" ;;
+  down) printf "󰤭" ;;
+  esac
+}
+
+"$@"
